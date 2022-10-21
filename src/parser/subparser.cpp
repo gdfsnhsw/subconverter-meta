@@ -1295,7 +1295,7 @@ void explodeStdHysteria(std::string hysteria, Proxy &node) {
         remarks = urlDecode(hysteria.substr(pos + 1));
         hysteria.erase(pos);
     }
-    const std::string stdhysteria_matcher = R"(^((.*):(\d+)[?](.*))$)";
+    const std::string stdhysteria_matcher = R"(^(.*):(\d+)[?](.*)$)";
     if (regGetMatch(hysteria, stdhysteria_matcher, 4, 0, &add, &port, &addition))
         return;
     auth = getUrlArg(addition, "auth");
