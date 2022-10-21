@@ -1302,7 +1302,7 @@ void explodeStdHysteria(std::string hysteria, Proxy &node) {
     protocol = getUrlArg(addition, "protocol");
     host = getUrlArg(addition, "peer");
     scv = getUrlArg(addition, "scv");
-    upmbps = getUrlArg(addition, "upmbps")
+    upmbps = getUrlArg(addition, "upmbps");
     downmbps = getUrlArg(addition, "downmbps");
     alpn = getUrlArg(addition, "alpn");
     obfs = getUrlArg(addition, "obfs");
