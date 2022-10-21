@@ -113,8 +113,8 @@ void hysteriaConstruct(Proxy &node, const std::string &group, const std::string 
                        const std::string &type, const std::string &protocol, const std::string &auth,
                        const std::string &host,
                        const std::string &upmbps, const std::string &downmbps, const std::string &alpn,
-                       const std::string &obfs, const std::string &obfsparam, tribool udp, tribool tfo, tribool scv,
-                       tribool tls13) {
+                       const std::string &obfs, const std::string &obfsparam, const std::string &iscv,
+                       tribool udp,tribool tfo, tribool scv, tribool tls13) {
     commonConstruct(node, ProxyType::Hysteria, group, remarks, server, port, tribool(), tribool(), scv, tribool());
     node.Protocol = protocol;
     node.Auth = auth;
@@ -123,6 +123,7 @@ void hysteriaConstruct(Proxy &node, const std::string &group, const std::string 
     node.Downmbps = downmbps;
     node.OBFS = obfs;
     node.OBFSParam = obfsparam;
+    node.AllowInsecure = tribool(iscv);
 }
 
 void ssrConstruct(Proxy &node, const std::string &group, const std::string &remarks, const std::string &server,
@@ -1285,7 +1286,7 @@ void explodeStdVless(std::string vless, Proxy &node) {
 }
 
 void explodeStdHysteria(std::string hysteria, Proxy &node) {
-    std::string add, port, type, protocol, auth, upmbps, downmbps, host, alpn, obfs, obfsparam, scv, remarks;
+    std::string add, port, type, protocol, auth, upmbps, downmbps, host, alpn, obfs, obfsparam, iscv, remarks;
     std::string addition;
     hysteria = hysteria.substr(11);
     string_size pos;
@@ -1301,7 +1302,7 @@ void explodeStdHysteria(std::string hysteria, Proxy &node) {
     auth = getUrlArg(addition, "auth");
     protocol = getUrlArg(addition, "protocol");
     host = getUrlArg(addition, "peer");
-    scv = getUrlArg(addition, "scv");
+    iscv = getUrlArg(addition, "insecure");
     upmbps = getUrlArg(addition, "upmbps");
     downmbps = getUrlArg(addition, "downmbps");
     alpn = getUrlArg(addition, "alpn");
@@ -1310,7 +1311,7 @@ void explodeStdHysteria(std::string hysteria, Proxy &node) {
     if (remarks.empty())
         remarks = add + ":" + port;
     hysteriaConstruct(node, HYSTERIA_DEFAULT_GROUP, remarks, add, port, type, protocol, auth, host, upmbps, downmbps,
-                      alpn, obfs, obfsparam);
+                      alpn, obfs, obfsparam, iscv);
 }
 
 void explodeShadowrocket(std::string rocket, Proxy &node) {
