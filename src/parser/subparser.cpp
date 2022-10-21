@@ -113,7 +113,7 @@ void hysteriaConstruct(Proxy &node, const std::string &group, const std::string 
                        const std::string &type, const std::string &protocol, const std::string &auth,
                        const std::string &host,
                        const std::string &upmbps, const std::string &downmbps, const std::string &alpn,
-                       const std::string &obfs, const std::string &obfsparam, const std::string &iscv,
+                       const std::string &obfs, const std::string &obfsparam,
                        tribool udp,tribool tfo, tribool scv, tribool tls13) {
     commonConstruct(node, ProxyType::Hysteria, group, remarks, server, port, tribool(), tribool(), scv, tribool());
     node.Protocol = protocol;
@@ -123,7 +123,6 @@ void hysteriaConstruct(Proxy &node, const std::string &group, const std::string 
     node.Downmbps = downmbps;
     node.OBFS = obfs;
     node.OBFSParam = obfsparam;
-    node.AllowInsecure = tribool(iscv);
 }
 
 void ssrConstruct(Proxy &node, const std::string &group, const std::string &remarks, const std::string &server,
