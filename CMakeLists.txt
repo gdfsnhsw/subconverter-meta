@@ -7,7 +7,10 @@ INCLUDE_DIRECTORIES("${CMAKE_SOURCE_DIR}/include/")
 IF(NOT CMAKE_BUILD_TYPE)
     SET(CMAKE_BUILD_TYPE Release)
 ENDIF()
-SET(CMAKE_CXX_STANDARD 17)
+
+If(NOT "${CMAKE_CXX_STANDARD}")
+    SET(CMAKE_CXX_STANDARD 17)
+ENDIF()
 
 IF(NOT MSVC)
     ADD_COMPILE_OPTIONS(-Wall -Wextra -Wno-unused-parameter -Wno-unused-result)
@@ -31,7 +34,7 @@ int main(){std::to_string(0);}
 
 IF(NOT BUILD_STATIC_LIBRARY)
 
-ADD_EXECUTABLE(${BUILD_TARGET_NAME} 
+ADD_EXECUTABLE(${BUILD_TARGET_NAME}
     src/generator/config/nodemanip.cpp
     src/generator/config/ruleconvert.cpp
     src/generator/config/subexport.cpp
