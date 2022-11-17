@@ -1306,7 +1306,7 @@ void explodeStdHysteria(std::string hysteria, Proxy &node) {
     downmbps = getUrlArg(addition, "downmbps");
     alpn = getUrlArg(addition, "alpn");
     obfs = getUrlArg(addition, "obfs");
-    obfsparam = getUrlArg(addition, "obfsparam");
+    obfsparam = getUrlArg(addition, "obfsParam");
     if (remarks.empty())
         remarks = add + ":" + port;
     hysteriaConstruct(node, HYSTERIA_DEFAULT_GROUP, remarks, add, port, type, protocol, auth, host, upmbps, downmbps,
